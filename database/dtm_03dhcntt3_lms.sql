@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 08, 2018 lúc 09:55 AM
+-- Thời gian đã tạo: Th3 09, 2018 lúc 05:53 PM
 -- Phiên bản máy phục vụ: 10.1.30-MariaDB
--- Phiên bản PHP: 7.2.1
+-- Phiên bản PHP: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,23 +29,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `chitietphieumuon` (
-  `machitiet` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `masach` int(11) NOT NULL,
   `maphieumuon` int(11) NOT NULL,
-  `tinhtrang` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `ngaytra` varchar(100) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `tinhtrang` varchar(100) NOT NULL,
+  `ngaytra` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `chitietphieumuon`
 --
 
-INSERT INTO `chitietphieumuon` (`machitiet`, `masach`, `maphieumuon`, `tinhtrang`, `ngaytra`) VALUES
-(1, 10, 1, 'đang mượn', '25/02/2018'),
-(2, 13, 2, 'đang mượn', '25/02/2018'),
-(3, 14, 2, 'đang mượn', '25/02/2018'),
-(4, 12, 5, 'đang mượn', '25/02/2018'),
-(5, 11, 5, 'đang mượn', '25/02/2018'),
+INSERT INTO `chitietphieumuon` (`id`, `masach`, `maphieumuon`, `tinhtrang`, `ngaytra`) VALUES
+(1, 10, 1, 'đang mượn', ''),
+(2, 13, 2, 'đang mượn', ''),
+(3, 14, 2, 'đang mượn', ''),
+(4, 12, 5, 'đang mượn', ''),
+(5, 11, 5, 'đang mượn', ''),
 (6, 17, 3, 'đã trả', '08/02/2018');
 
 -- --------------------------------------------------------
@@ -55,21 +55,21 @@ INSERT INTO `chitietphieumuon` (`machitiet`, `masach`, `maphieumuon`, `tinhtrang
 --
 
 CREATE TABLE `docgia` (
-  `madocgia` int(11) NOT NULL,
-  `ten` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `ho` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `gioitinh` varchar(10) CHARACTER SET utf8 NOT NULL,
-  `diachi` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `sdt` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `nguoidung` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `trangthai` varchar(100) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `ten` varchar(100) NOT NULL,
+  `ho` varchar(100) NOT NULL,
+  `gioitinh` varchar(10) NOT NULL,
+  `diachi` varchar(100) NOT NULL,
+  `sdt` varchar(100) NOT NULL,
+  `nguoidung` varchar(100) NOT NULL,
+  `trangthai` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `docgia`
 --
 
-INSERT INTO `docgia` (`madocgia`, `ten`, `ho`, `gioitinh`, `diachi`, `sdt`, `nguoidung`, `trangthai`) VALUES
+INSERT INTO `docgia` (`id`, `ten`, `ho`, `gioitinh`, `diachi`, `sdt`, `nguoidung`, `trangthai`) VALUES
 (1, 'Thư', 'Võ', 'Nữ', '123 abc', '01234561111', 'Sinh Viên', 'Hoạt Động'),
 (2, 'Hiền', 'Nguyễn', 'Nữ', '1111 Hồ Thị Kỉ', '012222444777', 'Sinh Viên', 'Hoạt Động'),
 (3, 'Hằng', 'Nguyễn', 'Nữ', '56 Trần Văn Đang', '09055544475', 'Sinh Viên', 'Hoạt Động'),
@@ -82,42 +82,21 @@ INSERT INTO `docgia` (`madocgia`, `ten`, `ho`, `gioitinh`, `diachi`, `sdt`, `ngu
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `nguoidung`
---
-
-CREATE TABLE `nguoidung` (
-  `iduser` int(11) NOT NULL,
-  `username` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `password` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `ten` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `ho` varchar(100) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Đang đổ dữ liệu cho bảng `nguoidung`
---
-
-INSERT INTO `nguoidung` (`iduser`, `username`, `password`, `ten`, `ho`) VALUES
-(1, 'user1', '123456', 'Thư', 'Võ');
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `phieumuon`
 --
 
 CREATE TABLE `phieumuon` (
-  `maphieu` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `madocgia` int(11) NOT NULL,
-  `ngaymuon` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `ngaytra` varchar(100) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ngaymuon` varchar(100) NOT NULL,
+  `ngaydaohan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `phieumuon`
 --
 
-INSERT INTO `phieumuon` (`maphieu`, `madocgia`, `ngaymuon`, `ngaytra`) VALUES
+INSERT INTO `phieumuon` (`id`, `madocgia`, `ngaymuon`, `ngaydaohan`) VALUES
 (1, 1, '02/02/2018', '25/02/2018'),
 (2, 2, '02/02/2018', '25/02/2018'),
 (3, 7, '02/02/2018', '25/02/2018'),
@@ -131,32 +110,31 @@ INSERT INTO `phieumuon` (`maphieu`, `madocgia`, `ngaymuon`, `ngaytra`) VALUES
 --
 
 CREATE TABLE `sach` (
-  `masach` int(11) NOT NULL,
-  `tensach` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `id` int(11) NOT NULL,
+  `tensach` varchar(100) NOT NULL,
   `maloai` int(50) NOT NULL,
-  `tacgia` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `nhaxuatban` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `tacgia` varchar(50) NOT NULL,
+  `nhaxuatban` varchar(100) NOT NULL,
   `namtaiban` int(11) NOT NULL,
-  `ngaynhan` varchar(20) NOT NULL,
   `ngaythem` datetime NOT NULL,
   `tinhtrang` varchar(30) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `sach`
 --
 
-INSERT INTO `sach` (`masach`, `tensach`, `maloai`, `tacgia`, `nhaxuatban`, `namtaiban`, `ngaynhan`, `ngaythem`, `tinhtrang`) VALUES
-(8, 'Đánh nhau với cối xay gió', 1, 'Trịnh Thị Thu', 'Nhà báo Tuổi Trẻ', 2002, '1/1/2018', '2018-03-01 00:00:00', 'Mới'),
-(9, 'Địa Lý', 4, 'Biên Cương', 'Bộ giáo dục và đào tạo', 2010, '1/1/2018', '2018-03-01 00:00:00', 'Mới'),
-(10, 'Khoa học Xã Hội', 5, 'Ngô Bảo Châu', 'Nhà xuất bản Kim Đồng', 2011, '1/1/2018', '2018-03-02 00:00:00', 'Mới'),
-(11, 'Đắc Nhân Tâm', 6, 'Dale Carnegie', 'Nhà báo Tuổi Trẻ', 2010, '1/1/2018', '2018-03-03 00:00:00', 'Mới'),
-(12, 'Quẳng gánh lo đi vui sống', 6, 'Dale Carnegie ', 'Nhà báo Tuổi Trẻ', 2016, '1/1/2018', '2018-03-01 00:00:00', 'Mới'),
-(13, 'Lập Trình căn bản', 2, 'Ngô Bảo Châu', 'Nhà xuất bản trẻ', 2010, '1/1/2018', '2018-03-04 00:00:00', 'Mới'),
-(14, 'Nhạc Lý', 3, 'ChiPu', 'Nhà xuất bản trẻ', 2017, '1/1/2018', '2018-03-01 00:00:00', 'Mới'),
-(15, 'Tài Nguyên Thiên Nhiên', 1, 'Minh Việt', 'Nhà xuất bản nhân văn', 2011, '1/1/2018', '2018-03-02 00:00:00', 'Mới'),
-(16, 'Chúa tể của những chiếc nhẫn', 4, 'Toni Jane', 'Nhà xuất bản Kim Đồng', 2008, '1/1/2018', '2018-03-03 00:00:00', 'Mới'),
-(17, 'Cuộc chiến của những vì sao', 4, 'Mina Toh', 'Nhà xuất bản Kim Đồng', 2006, '1/1/2018', '2018-03-01 00:00:00', 'Mới');
+INSERT INTO `sach` (`id`, `tensach`, `maloai`, `tacgia`, `nhaxuatban`, `namtaiban`, `ngaythem`, `tinhtrang`) VALUES
+(8, 'Đánh nhau với cối xay gió', 1, 'Trịnh Thị Thu', 'Nhà báo Tuổi Trẻ', 2002, '2018-03-01 00:00:00', 'Mới'),
+(9, 'Địa Lý', 4, 'Biên Cương', 'Bộ giáo dục và đào tạo', 2010, '2018-03-01 00:00:00', 'Hư'),
+(10, 'Khoa học Xã Hội', 5, 'Ngô Bảo Châu', 'Nhà xuất bản Kim Đồng', 2011, '2018-03-02 00:00:00', 'Mới'),
+(11, 'Đắc Nhân Tâm', 6, 'Dale Carnegie', 'Nhà báo Tuổi Trẻ', 2010, '2018-03-03 00:00:00', 'Mất'),
+(12, 'Quẳng gánh lo đi vui sống', 6, 'Dale Carnegie ', 'Nhà báo Tuổi Trẻ', 2016, '1948-03-01 00:00:00', 'Cũ'),
+(13, 'Lập Trình căn bản', 2, 'Ngô Bảo Châu', 'Nhà xuất bản trẻ', 2010, '2018-03-04 00:00:00', 'Cũ'),
+(14, 'Nhạc Lý', 3, 'ChiPu', 'Nhà xuất bản trẻ', 2017, '2018-03-01 00:00:00', 'Mới'),
+(15, 'Tài Nguyên Thiên Nhiên', 1, 'Minh Việt', 'Nhà xuất bản nhân văn', 2011, '2018-03-02 00:00:00', 'Mới'),
+(16, 'Chúa tể của những chiếc nhẫn', 4, 'Toni Jane', 'Nhà xuất bản Kim Đồng', 2008, '2018-03-03 00:00:00', 'Hư'),
+(17, 'Cuộc chiến của những vì sao', 4, 'Mina Toh', 'Nhà xuất bản Kim Đồng', 2006, '2018-03-01 00:00:00', 'Cũ');
 
 -- --------------------------------------------------------
 
@@ -165,21 +143,42 @@ INSERT INTO `sach` (`masach`, `tensach`, `maloai`, `tacgia`, `nhaxuatban`, `namt
 --
 
 CREATE TABLE `theloai` (
-  `maloai` int(11) NOT NULL,
-  `tenloai` varchar(50) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `tenloai` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `theloai`
 --
 
-INSERT INTO `theloai` (`maloai`, `tenloai`) VALUES
+INSERT INTO `theloai` (`id`, `tenloai`) VALUES
 (1, 'Văn học'),
 (2, 'Xã hội'),
 (3, 'Tự nhiên'),
 (4, 'Giải trí'),
 (5, 'Thể Thao'),
 (6, 'Khoa học');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `ten` varchar(100) NOT NULL,
+  `ho` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `ten`, `ho`) VALUES
+(1, 'user1', '123456', 'Thư', 'Võ');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -189,7 +188,7 @@ INSERT INTO `theloai` (`maloai`, `tenloai`) VALUES
 -- Chỉ mục cho bảng `chitietphieumuon`
 --
 ALTER TABLE `chitietphieumuon`
-  ADD PRIMARY KEY (`machitiet`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `maphieumuon` (`maphieumuon`),
   ADD KEY `masach` (`masach`);
 
@@ -197,33 +196,33 @@ ALTER TABLE `chitietphieumuon`
 -- Chỉ mục cho bảng `docgia`
 --
 ALTER TABLE `docgia`
-  ADD PRIMARY KEY (`madocgia`);
-
---
--- Chỉ mục cho bảng `nguoidung`
---
-ALTER TABLE `nguoidung`
-  ADD PRIMARY KEY (`iduser`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `phieumuon`
 --
 ALTER TABLE `phieumuon`
-  ADD PRIMARY KEY (`maphieu`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `madocgia` (`madocgia`);
 
 --
 -- Chỉ mục cho bảng `sach`
 --
 ALTER TABLE `sach`
-  ADD PRIMARY KEY (`masach`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `maloai` (`maloai`);
 
 --
 -- Chỉ mục cho bảng `theloai`
 --
 ALTER TABLE `theloai`
-  ADD PRIMARY KEY (`maloai`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -233,37 +232,37 @@ ALTER TABLE `theloai`
 -- AUTO_INCREMENT cho bảng `chitietphieumuon`
 --
 ALTER TABLE `chitietphieumuon`
-  MODIFY `machitiet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `docgia`
 --
 ALTER TABLE `docgia`
-  MODIFY `madocgia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT cho bảng `nguoidung`
---
-ALTER TABLE `nguoidung`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `phieumuon`
 --
 ALTER TABLE `phieumuon`
-  MODIFY `maphieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `sach`
 --
 ALTER TABLE `sach`
-  MODIFY `masach` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `theloai`
 --
 ALTER TABLE `theloai`
-  MODIFY `maloai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -273,20 +272,20 @@ ALTER TABLE `theloai`
 -- Các ràng buộc cho bảng `chitietphieumuon`
 --
 ALTER TABLE `chitietphieumuon`
-  ADD CONSTRAINT `chitietphieumuon_ibfk_1` FOREIGN KEY (`maphieumuon`) REFERENCES `phieumuon` (`maphieu`),
-  ADD CONSTRAINT `chitietphieumuon_ibfk_2` FOREIGN KEY (`masach`) REFERENCES `sach` (`masach`);
+  ADD CONSTRAINT `chitietphieumuon_ibfk_1` FOREIGN KEY (`maphieumuon`) REFERENCES `phieumuon` (`id`),
+  ADD CONSTRAINT `chitietphieumuon_ibfk_2` FOREIGN KEY (`masach`) REFERENCES `sach` (`id`);
 
 --
 -- Các ràng buộc cho bảng `phieumuon`
 --
 ALTER TABLE `phieumuon`
-  ADD CONSTRAINT `phieumuon_ibfk_1` FOREIGN KEY (`madocgia`) REFERENCES `docgia` (`madocgia`);
+  ADD CONSTRAINT `phieumuon_ibfk_1` FOREIGN KEY (`madocgia`) REFERENCES `docgia` (`id`);
 
 --
 -- Các ràng buộc cho bảng `sach`
 --
 ALTER TABLE `sach`
-  ADD CONSTRAINT `sach_ibfk_1` FOREIGN KEY (`maloai`) REFERENCES `theloai` (`maloai`);
+  ADD CONSTRAINT `sach_ibfk_1` FOREIGN KEY (`maloai`) REFERENCES `theloai` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
