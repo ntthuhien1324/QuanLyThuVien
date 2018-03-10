@@ -1,13 +1,13 @@
 @extends('librarian.layout.index')
 @section('content')
-
-<ul class="nav nav-tabs nav-stacked">
-	<li>
-		<a href="#add_user" data-toggle="modal" ><i class="icon-plus icon-large"></i>&nbsp;<strong>Add User</strong></a>
-	</li>
-</ul>
-										
-										 
+<div class="span2">
+	<ul class="nav nav-tabs nav-stacked">
+		<li>
+			<a href="#add_user" data-toggle="modal" ><i class="icon-plus icon-large"></i>&nbsp;<strong>Add User</strong></a>
+		</li>
+	</ul>
+</div>											
+											 
 <!-- Modal add user -->
 @include('librarian.user.modal_add_user')
 										
@@ -43,33 +43,7 @@
             	@include('librarian.user.modal_edit_user')
 			</td>
 
-			<!-- tooltip_edit_delete -->
-			<!-- script -->
-			<script type="text/javascript">
-			    $(document).ready(function(){
-			        $('#e1').tooltip('show')
-			        $('#e1').tooltip('hide')
-			    });
-			</script>
-			<!-- end script -->
-			<!-- script -->
-			<script type="text/javascript">
-			    $(document).ready(function(){
-			        
-			        $('#1').tooltip('show')
-			        $('#1').tooltip('hide')
-			    });
-			</script>
-			<!-- end script -->
-			<!-- script -->
-			<script type="text/javascript">
-			    $(document).ready(function(){
-			        
-			        $('#v1').tooltip('show')
-			        $('#v1').tooltip('hide')
-			    });
-			</script>
-			<!-- end script -->
+			@include('librarian.tooltip_edit_delete')
 			     
 		
             </tr>
@@ -78,24 +52,24 @@
         </tbody>
     </table>
 							
-<script type="text/javascript">
-/*         $(document).ready( function() {
-            $('.btn-danger').click( function() {
-                var id = $(this).attr("id");
-                if(confirm("Are you sure you want to delete this Data?")){
-                    $.ajax({
-                        type: "POST",
-                        url: "delete_user.php",
-                        data: ({id: id}),
-                        cache: false,
-                        success: function(html){
-                        $(".del"+id).fadeOut('slow'); 
-                        } 
-                    }); 
-                }else{
-                    return false;}
-            });				
-        }); */
-</script>
-
+	<script type="text/javascript">
+	/*         $(document).ready( function() {
+	            $('.btn-danger').click( function() {
+	                var id = $(this).attr("id");
+	                if(confirm("Are you sure you want to delete this Data?")){
+	                    $.ajax({
+	                        type: "POST",
+	                        url: "delete_user.php",
+	                        data: ({id: id}),
+	                        cache: false,
+	                        success: function(html){
+	                        $(".del"+id).fadeOut('slow'); 
+	                        } 
+	                    }); 
+	                }else{
+	                    return false;}
+	            });				
+	        }); */
+	</script>
+</div>
 @endsection

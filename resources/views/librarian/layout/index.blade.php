@@ -2,13 +2,10 @@
 @include('librarian.layout.navbar_dashboard')
 <div class="container">
 		<div class="margin-top">
-			<div class="row">	
-			<div class="span12">		
+			<div class="row">				
                        
 				@yield('content')
-				
-				
-			</div>		
+						
 			</div>
 		</div>
     </div>

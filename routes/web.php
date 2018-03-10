@@ -34,3 +34,35 @@ Route::get('thu',function(){
 Route::get('listuser', function(){
 	return view('librarian.user.list_user');
 });
+
+Route::get('muonsach', function(){
+	return view('librarian.muontrasach.borrow');
+});
+
+Route::get('listtrasach', function(){
+	return view('librarian.muontrasach.return');
+});
+
+Route::get('listborrowed', function(){
+	return view('librarian.muontrasach.list_borrowed');
+});
+
+Route::get('books', function(){
+	return view('librarian.sach.all_books');
+});
+
+Route::get('addbook', function(){
+	return view('librarian.sach.add_book');
+});
+
+Route::get('members', function(){
+	return view('librarian.docgia.members');
+});
+
+Route::get('addmember', function(){
+	return view('librarian.docgia.add_member');
+});
+
+Route::get('editmember', function(){
+	return view('librarian.docgia.edit_member');
+});
