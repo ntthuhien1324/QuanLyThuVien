@@ -2,89 +2,108 @@
 @section('content')
 
 <div class="span12">	
-	<div class="alert alert-info">Add Books</div>
+	<div class="alert alert-info">Sửa sách</div>
 	
-	<p><a href="books.php" class="btn btn-info"><i class="icon-arrow-left icon-large"></i>&nbsp;Back</a></p>
+	<p><a href="librarian/book/list" class="btn btn-info"><i class="icon-arrow-left icon-large"></i>&nbsp;Back</a></p>
 	
 	<div class="addstudent">
-		<div class="details">Please Enter Details Below</div>		
+		<div class="details">Vui lòng nhập chi tiết sau</div>		
 		
-		<form class="form-horizontal" method="POST" action="books_save.php" enctype="multipart/form-data">
+		@if(count($errors)>0)
+			<div class="alert alert-danger">
+				@foreach($errors->all() as $err)
+					{{$err}}<br>
+				@endforeach
+			</div>
+		@endif
+
+		@if(session('thongbao'))
+			<div class="alert alert-success">
+				{{session('thongbao')}}
+			</div>
+		@endif
+
+		<form class="form-horizontal" method="POST" action="librarian/book/editbook/{{$sach->id}}" enctype="multipart/form-data">
+			<input type="hidden" name="_token" value="{{csrf_token()}}" />
 			<div class="control-group">
-				<label class="control-label" for="inputEmail">Book_title:</label>
+				<label class="control-label" >Tên sách:</label>
 				<div class="controls">
-					<input type="text" class="span4" id="inputEmail" name="book_title"  placeholder="Book Title" required>
+					<input type="text" class="span4"  name="tensach"  placeholder="Tên sách"  value="{{$sach->tensach}}" required>
 				</div>
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="inputPassword">Category</label>
+				<label class="control-label" >Thể loại:</label>
 				<div class="controls">
-					<select name="category_id">
-						<option></option>			
-						<option value=""></option>			
+					<select name="theloai">
+						<option></option>
+						@foreach($theloai as $tl)			
+							<option 
+							@if($sach->maloai==$tl->id)
+								{{"selected"}}
+							@endif
+							value="{{$tl->id}}">{{$tl->tenloai}}</option>
+						@endforeach			
 					</select>
 				</div>
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="inputEmail">Author:</label>
+				<label class="control-label" >Tác giả:</label>
 				<div class="controls">
-					<input type="text"  class="span4" id="inputPassword" name="author"  placeholder="Author" required>
+					<input type="text"  class="span4" name="tacgia"  placeholder="Tác giả" value="{{$sach->tacgia}}" required>
 				</div>
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="iionputPassword">Book Copies:</label>
+				<label class="control-label" >Nhà xuất bản:</label>
 				<div class="controls">
-					<input type="text" class="span1" id="inputPassword" name="book_copies"  placeholder="" required>
-				</div>
-			</div>
-		
-			<div class="control-group">
-				<label class="control-label" for="inputPassword">Book Publication:</label>
-				<div class="controls">
-					<input type="text"  class="span4" id="inputPassword" name="book_pub"  placeholder="book_pub" required>
+					<input type="text"  class="span4" name="nhaxuatban" placeholder="Nhà xuất bản" value="{{$sach->nhaxuatban}}" required>
 				</div>
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="inputPassword">Publisher Name:</label>
+				<label class="control-label" for="inputPassword">Năm tái bản:</label>
 				<div class="controls">
-					<input type="text"  class="span4" id="inputPassword" name="publisher_name"  placeholder="Publisher Name" required>
-				</div>
-			</div>
-
-			<div class="control-group">
-				<label class="control-label" for="inputPassword">Isbn:</label>
-				<div class="controls">
-					<input type="text"  class="span4" id="inputPassword" name="isbn"  placeholder="ISBN" required>
-				</div>
-			</div>
-
-			<div class="control-group">
-				<label class="control-label" for="inputPassword">Copyright Year:</label>
-				<div class="controls">
-					<input type="text" id="inputPassword" name="copyright_year"  placeholder="Copyright Year" required>
+					<input type="text"  class="span4" name="namtaiban" placeholder="Năm tái bản" value="{{$sach->namtaiban}}" required>
 				</div>
 			</div>
 			
 			<div class="control-group">
-				<label class="control-label" for="inputPassword">Status:</label>
+				<label class="control-label" >Tình trạng:</label>
 				<div class="controls">
-					<select name="status" required>
-						<option></option>
-						<option>New</option>
-						<option>Old</option>
-						<option>Lost</option>
-						<option>Damage</option>
+					<select name="tinhtrang" required>
+						<option 
+						@if($sach->tinhtrang=="Mới")
+							{{"selected"}}
+						@endif
+							>Mới</option>
+
+						<option
+						@if($sach->tinhtrang=="Cũ")
+							{{"selected"}}
+						@endif
+							>Cũ</option>
+
+						<option
+						@if($sach->tinhtrang=="Mất")
+							{{"selected"}}
+						@endif
+							>Mất</option>
+
+						<option
+						@if($sach->tinhtrang=="Hư")
+							{{"selected"}}
+						@endif
+							>Hư</option>
+							
 					</select>
 				</div>
 			</div>
 				
 			<div class="control-group">
 				<div class="controls">
-					<button name="submit" type="submit" class="btn btn-success"><i class="icon-save icon-large"></i>&nbsp;Update</button>
+					<button name="submit" type="submit" class="btn btn-success"><i class="icon-save icon-large"></i>&nbsp;Cập nhật</button>
 				</div>
 			</div>
     	</form>	

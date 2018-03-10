@@ -8,11 +8,11 @@
     </div>
 			
     <ul class="nav nav-pills">
-		<li><a href="books.php">All</a></li>
-		<li><a href="new_books.php">Sách mới</a></li>
-		<li><a href="old_books.php">Sách cũ</a></li>
-		<li><a href="lost.php">Sách bị mất</a></li>
-		<li><a href="damage.php">Sách bị hư</a></li>
+		<li><a href="librarian/book/list">All</a></li>
+		<li><a href="librarian/book/newbooks">Sách mới</a></li>
+		<li><a href="librarian/book/oldbooks">Sách cũ</a></li>
+		<li><a href="librarian/book/lostbooks">Sách bị mất</a></li>
+		<li><a href="librarian/book/damagebooks">Sách bị hư</a></li>
 	</ul>
 			
 	<center class="title">
@@ -26,8 +26,20 @@
 			<a href="" onclick="window.print()" class="btn btn-info"><i class="icon-print icon-large"></i> Print</a>
 		</div>
 		
-		<p><a href="add_books.php" class="btn btn-success"><i class="icon-plus"></i>&nbsp;Add Books</a></p>
-	
+		<p><a href="librarian/book/addbook" class="btn btn-success"><i class="icon-plus"></i>&nbsp;Thêm sách</a></p>
+	@if(count($errors)>0)
+		<div class="alert alert-danger">
+			@foreach($errors->all() as $err)
+				{{$err}}<br>
+			@endforeach
+		</div>
+	@endif
+
+	@if(session('thongbao'))
+		<div class="alert alert-success">
+			{{session('thongbao')}}
+		</div>
+	@endif
         <thead>
             <tr>
 			    <th>ID Sách</th>                                 

@@ -23,46 +23,25 @@ Route::get('dashboard',function(){
 	return view('librarian.layout.dashboard');
 });
 
-use App\theloai;
-Route::get('thu',function(){
-	$theloai = theloai::find(1);
-	foreach($theloai->sach as $sach){
-		echo $sach->tensach."<br>";
-	}
+Route::group(['prefix'=>'librarian'], function(){
+	Route::group(['prefix'=>'user'], function(){
+		Route::get('list','UserController@getList');
+	});
+
+	Route::group(['prefix'=>'book'], function(){
+		Route::get('list','BookController@getList');
+		Route::get('newbooks','BookController@getNewBooks');
+		Route::get('oldbooks','BookController@getOldBooks');
+		Route::get('lostbooks','BookController@getLostBooks');
+		Route::get('damagebooks','BookController@getDamageBooks');
+
+		Route::get('addbook','BookController@getAddBook');
+		Route::post('addbook','BookController@postAddBook');
+
+		Route::get('editbook/{id}','BookController@getEditBook');
+		Route::post('editbook/{id}','BookController@postEditBook');
+
+		Route::get('deletebook/{id}','BookController@getDeleteBook');
+	});
 });
 
-Route::get('listuser', function(){
-	return view('librarian.user.list_user');
-});
-
-Route::get('muonsach', function(){
-	return view('librarian.muontrasach.borrow');
-});
-
-Route::get('listtrasach', function(){
-	return view('librarian.muontrasach.return');
-});
-
-Route::get('listborrowed', function(){
-	return view('librarian.muontrasach.list_borrowed');
-});
-
-Route::get('books', function(){
-	return view('librarian.sach.all_books');
-});
-
-Route::get('addbook', function(){
-	return view('librarian.sach.add_book');
-});
-
-Route::get('members', function(){
-	return view('librarian.docgia.members');
-});
-
-Route::get('addmember', function(){
-	return view('librarian.docgia.add_member');
-});
-
-Route::get('editmember', function(){
-	return view('librarian.docgia.edit_member');
-});

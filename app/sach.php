@@ -8,6 +8,7 @@ class sach extends Model
 {
     //
     protected $table = "sach";
+    public $timestamps = false;
 
     public function theloai() {
     	return $this->belongsTo('App\theloai','maloai','id');
