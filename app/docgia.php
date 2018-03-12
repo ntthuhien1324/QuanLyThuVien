@@ -16,4 +16,6 @@ class docgia extends Model
     public function chitietphieumuon(){
     	return $this->hasManyThrough('App\chitietphieumuon','App\phieumuon','maphieumuon','madocgia','id');
     }
+
+    public $timestamps = false;
 }

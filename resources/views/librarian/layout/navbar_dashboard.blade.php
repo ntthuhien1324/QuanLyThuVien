@@ -11,7 +11,7 @@
                 <!-- .nav, .navbar-search, .navbar-form, etc -->
 				<ul class="nav">
 					<li class="active"><a href="dashboard.php"><i class="icon-home icon-large"></i>&nbsp;Home</a></li>
-					<li><a href="users.php"><i class="icon-user icon-large"></i>&nbsp;Users</a></li>
+					<li><a href="librarian/user/listuser"><i class="icon-user icon-large"></i>&nbsp;Users</a></li>
 					
 					<li><a href="borrow.php"  data-toggle="dropdown" ><i class="icon-file icon-large"></i> Mượn - Trả</a>
 						<ul class="dropdown-menu">

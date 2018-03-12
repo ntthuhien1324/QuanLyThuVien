@@ -17,31 +17,36 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong><i class="icon-user icon-large"></i>&nbsp;Users Table</strong>
         </div>
-        
+		@if(session('thongbao'))
+			<div class="alert alert-sucess">
+				{{session('thongbao')}}
+			</div>
+		@endif
         <thead>
             <tr>
+				<th>ID</th>
                 <th>Username</th>
                 <th>Password</th>                                 
-                <th>Firstname</th>                                 
-                <th>Lastname</th>                                 
-                <th>Action</th>
+                <th>Tên</th>                                 
+                <th>Họ</th>                                 
             </tr>
         </thead>
         
         <tbody>
-		 
-          
-			 <tr class="del1">
-            <td>admin</td> 
-            <td>admin</td> 
-            <td>Hien</td> 
-            <td>Nguyen</td> 
+		@foreach($user as $us)
+			<tr class="del1">
+            <td>{{$us->id}}</td> 
+            <td>{{$us->username}}</td> 
+            <td>{{$us->password}}</td> 
+            <td>{{$us->ten}}</td> 
+			<td>{{$us->ho}}</td> 
             <td width="100">
-                <a rel="tooltip"  title="Delete" id="1"  href="#delete_user1" data-toggle="modal"  class="btn btn-danger"><i class="icon-trash icon-large"></i></a>
+                <a rel="tooltip"  title="Delete" id="1"  href="librarian/user/delmember/{{$us->id}}"  class="btn btn-danger"><i class="icon-trash icon-large"></i></a>
                 @include('librarian.user.modal_delete_user')
 				<a rel="tooltip"  title="Edit" id="e1" href="#edit1" data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i></a>
             	@include('librarian.user.modal_edit_user')
 			</td>
+			@endforeach
 
 			@include('librarian.tooltip_edit_delete')
 			     

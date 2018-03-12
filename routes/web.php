@@ -30,7 +30,27 @@ Route::get('thu',function(){
 		echo $sach->tensach."<br>";
 	}
 });
+Route::group(['prefix'=>'librarian'],function(){
+	Route::group(['prefix'=>'member'], function(){
+		Route::get('listmember','MembersController@getMembers');
 
+		Route::get('addmember','MembersController@getAddMembers');
+		Route::post('addmember','MembersController@postAddMembers');
+
+		Route::get('editmember/{id}','MembersController@getEditMembers');
+		Route::post('editmember/{id}','MembersController@postEditMembers');
+
+		Route::get('delmember/{id}','MembersController@getDelMembers');
+
+		
+	});
+	Route::group(['prefix'=>'user'], function(){
+		Route::get('listuser','UserController@getUser');
+		Route::get('adduser','UserController@getAddUser');
+		Route::post('adduser','UserController@postAddUser');
+		Route::get('delmember/{id}','UserController@getDelUser');
+	});
+});
 Route::get('listuser', function(){
 	return view('librarian.user.list_user');
 });
@@ -55,7 +75,7 @@ Route::get('addbook', function(){
 	return view('librarian.sach.add_book');
 });
 
-Route::get('members', function(){
+Route::group(['prefix'=>'qlmembers'], function(){
 	return view('librarian.docgia.members');
 });
 

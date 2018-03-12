@@ -3,7 +3,7 @@
 <head>
 	<title>E.B. Magalona National High School</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+	<base href="{{asset('')}}">
 	<!-- Bootstrap -->
 	<link href="librarian_asset/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
 	<link href="librarian_asset/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
