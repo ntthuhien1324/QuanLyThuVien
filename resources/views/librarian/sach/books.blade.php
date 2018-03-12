@@ -21,7 +21,7 @@
 		
 	</center>
                 
-    <table cellpadding="0" cellspacing="0" border="0" class="table  table-bordered" id="example">
+    <table cellpadding="0" cellspacing="0" border="0" class="table  table-bordered" >
 		<div class="pull-right">
 			<a href="" onclick="window.print()" class="btn btn-info"><i class="icon-print icon-large"></i> Print</a>
 		</div>

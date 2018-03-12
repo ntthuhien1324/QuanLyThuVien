@@ -10,7 +10,7 @@
             <div class="nav-collapse collapse">
                 <!-- .nav, .navbar-search, .navbar-form, etc -->
 				<ul class="nav">
-					<li class="active"><a href="dashboard"><i class="icon-home icon-large"></i>&nbsp;Home</a></li>
+					<li class="active"><a href="librarian/dashboard"><i class="icon-home icon-large"></i>&nbsp;Home</a></li>
 					<li><a href="librarian/user/listuser"><i class="icon-user icon-large"></i>&nbsp;Users</a></li>
 					
 					<li><a data-toggle="dropdown" href="#"><i class="icon-file icon-large"></i> Mượn - Trả</a>
@@ -27,7 +27,9 @@
 				
 
 					<!-- <li><a href="section.php"><i class="icon-group icon-large"></i>&nbsp;Sections</a></li> -->
-					<li><a href="logout.php"><i class="icon-signout icon-large"></i>&nbsp;Logout</a></li>
+					@if(Auth::check())					
+					<li><a href="librarian/logout"><i class="icon-signout icon-large"></i> Logout </a></li>
+					@endif
 				</ul>
 			
 				<div class="pull-right">

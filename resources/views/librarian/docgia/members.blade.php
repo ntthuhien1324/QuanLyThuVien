@@ -12,7 +12,7 @@
 				{{session('thongbao')}}
 			</div>
 	@endif
-	<table cellpadding="0" cellspacing="0" border="0" class="table  table-bordered" id="example">
+	<table cellpadding="0" cellspacing="0" border="0" class="table  table-bordered" >
         <p><a href="librarian/member/addmember" class="btn btn-success"><i class="icon-plus"></i>&nbsp;Add Member</a></p>
 		
 		<thead>

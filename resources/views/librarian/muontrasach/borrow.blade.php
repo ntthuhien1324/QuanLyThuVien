@@ -50,7 +50,7 @@
 
 		<div class="span8">
 			<div class="alert alert-success"><strong>Chọn sách</strong></div>
-            <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
+            <table cellpadding="0" cellspacing="0" border="0" class="table" >
 				<thead>
                     <tr>                       
                         <th>Mã sách</th>                                 

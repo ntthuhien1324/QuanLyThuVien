@@ -15,15 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login',function(){
-	return view('librarian.login');
-});
+Route::get('librarian/login','UserController@getLogin');
+Route::post('librarian/login','UserController@postLogin');
 
-Route::get('dashboard',function(){
-	return view('librarian.layout.dashboard');
-});
+Route::get('librarian/logout','UserController@getLogout');
 
-Route::group(['prefix'=>'librarian'], function(){
+// Route::get('librarian/dashboard',function(){
+// 	return view('librarian.layout.dashboard');
+// });
+
+Route::group(['prefix'=>'librarian','middleware' => 'librarianLogin'], function(){
+	Route::get('dashboard', function(){
+		return view('librarian.layout.dashboard');
+	});
+
 	Route::group(['prefix'=>'member'], function(){
 		Route::get('listmember','MembersController@getMembers');
 
@@ -39,6 +44,7 @@ Route::group(['prefix'=>'librarian'], function(){
 	});
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('listuser','UserController@getUser');
+		
 		Route::post('edituser/{id}','UserController@postEditUser');
 
 		Route::get('adduser','UserController@getAddUser');
@@ -71,5 +77,7 @@ Route::group(['prefix'=>'librarian'], function(){
 
 		Route::get('return/{id}','TransactionController@getReturnBook');
 	});
+
+	Route::post('search', 'BookController@postSearch');
 });
 

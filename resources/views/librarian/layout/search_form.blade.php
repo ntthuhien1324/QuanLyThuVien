@@ -2,18 +2,19 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-header"></div>
 		<div class="modal-body">
-		    <form class="form-horizontal" method="post" action="advance_search.php">
+		    <form class="form-horizontal" method="post" action="librarian/search">
+		    	<input type="hidden" name="_token" value="{{csrf_token()}}" />
 				<div class="control-group">
-					<label class="control-label" for="inputEmail">Title</label>
+					<label class="control-label" >Tên sách</label>
 					<div class="controls">
-						<input type="text" name="title" id="inputEmail" placeholder="Title">
+						<input type="text" name="tensach"  placeholder="Tên sách">
 					</div>
 				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="inputPassword">Author</label>
+					<label class="control-label" >Tác giả</label>
 					<div class="controls">
-						<input type="text" name="author" id="inputPassword" placeholder="Author">
+						<input type="text" name="tacgia" placeholder="Tác giả">
 					</div>
 				</div>		
 								

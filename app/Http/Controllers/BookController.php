@@ -125,4 +125,12 @@ class BookController extends Controller
     	$sach->delete();
     	return redirect('librarian/book/list')->with('thongbao','Xóa thành công');
     }
+
+    public function postSearch(Request $request){
+        $tensach = $request->tensach;
+        $tacgia = $request->tacgia;
+        $sach = sach::all()->where('tensach','like',$tensach);
+        $sach1 = sach::all()->where('tacgia', 'like', $tacgia);
+        return view('librarian.sach.search_book',['sach'=>$sach, 'sach1'=>$sach1]);
+    }
 }
