@@ -24,8 +24,26 @@ Route::get('dashboard',function(){
 });
 
 Route::group(['prefix'=>'librarian'], function(){
+	Route::group(['prefix'=>'member'], function(){
+		Route::get('listmember','MembersController@getMembers');
+
+		Route::get('addmember','MembersController@getAddMembers');
+		Route::post('addmember','MembersController@postAddMembers');
+
+		Route::get('editmember/{id}','MembersController@getEditMembers');
+		Route::post('editmember/{id}','MembersController@postEditMembers');
+
+		Route::get('delmember/{id}','MembersController@getDelMembers');
+
+		
+	});
 	Route::group(['prefix'=>'user'], function(){
-		Route::get('list','UserController@getList');
+		Route::get('listuser','UserController@getUser');
+		Route::post('edituser/{id}','UserController@postEditUser');
+
+		Route::get('adduser','UserController@getAddUser');
+		Route::post('adduser','UserController@postAddUser');
+		Route::get('delmember/{id}','UserController@getDelUser');
 	});
 
 	Route::group(['prefix'=>'book'], function(){

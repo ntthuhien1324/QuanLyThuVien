@@ -1,34 +1,35 @@
-<div id="edit1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="edit{{$us->id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-body">
 		<div class="alert alert-info"><strong>Edit User</strong></div>
 		
-		<form class="form-horizontal" method="post">
+		<form class="form-horizontal" action="librarian/user/edituser/{{$us->id}}" method="post">
+			<input type="hidden" name="_token" value="{{csrf_token()}}" />
 			<div class="control-group">
-				<label class="control-label" for="inputEmail">Username</label>
+				<label class="control-label" >Username</label>
 				<div class="controls">
-					<input type="hidden" id="inputEmail" name="id" value="1" required>
-					<input type="text" id="inputEmail" name="username" value="admin" required>
+					<input type="hidden" name="id" value="{{$us->id}}" required>
+					<input type="text"  name="username" value="{{$us->username}}" required>
 				</div>
 			</div>
 			
 			<div class="control-group">
-				<label class="control-label" for="inputPassword">Password</label>
+				<label class="control-label" >Password</label>
 				<div class="controls">
-					<input type="text" name="password" id="inputPassword" value="admin" required>
+					<input type="text" name="password" id="inputPassword" value="" required>
 				</div>
 			</div>
 				
 			<div class="control-group">
-				<label class="control-label" for="inputEmail">Firstname</label>
+				<label class="control-label" for="inputEmail">Tên</label>
 				<div class="controls">
-					<input type="text" id="inputEmail" name="firstname" value="Hiền" required>
+					<input type="text" id="inputEmail" name="firstname" value="{{$us->ten}}" required>
 				</div>
 			</div>
 				
 			<div class="control-group">
-				<label class="control-label" for="inputEmail">Lastname</label>
+				<label class="control-label" for="inputEmail">Họ</label>
 				<div class="controls">
-					<input type="text" id="inputEmail" name="lastname" value="Nguyễn" required>
+					<input type="text" id="inputEmail" name="lastname" value="{{$us->ho}}" required>
 				</div>
 			</div>
 			
@@ -44,20 +45,3 @@
 		<button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove icon-large"></i>&nbsp;Close</button>
 	</div>
 </div>
-
-<?php
-if (isset($_POST['edit'])){
-
-$user_id=$_POST['id'];
-$username=$_POST['username'];
-$password=$_POST['password'];
-$firstname=$_POST['firstname'];
-$lastname=$_POST['lastname'];
-
-mysql_query("update users set username='$username', password='$password' , firstname = '$firstname' , lastname = '$lastname'  where user_id='$user_id'")or die(mysql_error()); ?>
-<script>
-window.location="users.php";
-</script>
-<?php
-}
-?>

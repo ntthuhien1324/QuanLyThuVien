@@ -1,4 +1,7 @@
-<div id="add_user" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<form action="librarian/user/adduser" method="POST">
+  <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+	<div id="add_user" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-body">
 		<div class="alert alert-info"><strong>Add User</strong></div>
 		
@@ -44,3 +47,4 @@
 	</div>
 	
 </div>
+</form>

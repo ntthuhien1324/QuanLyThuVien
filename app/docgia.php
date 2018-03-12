@@ -8,6 +8,7 @@ class docgia extends Model
 {
     //
     protected $table = "docgia";
+    public $timestamps = false;
 
     public function phieumuon(){
     	return $this->hasMany('App\phieumuon','madocgia','id');

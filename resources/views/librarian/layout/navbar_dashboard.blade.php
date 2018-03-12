@@ -11,7 +11,7 @@
                 <!-- .nav, .navbar-search, .navbar-form, etc -->
 				<ul class="nav">
 					<li class="active"><a href="dashboard"><i class="icon-home icon-large"></i>&nbsp;Home</a></li>
-					<li><a href="librarian/user/list"><i class="icon-user icon-large"></i>&nbsp;Users</a></li>
+					<li><a href="librarian/user/listuser"><i class="icon-user icon-large"></i>&nbsp;Users</a></li>
 					
 					<li><a data-toggle="dropdown" href="#"><i class="icon-file icon-large"></i> Mượn - Trả</a>
 						<ul class="dropdown-menu">
@@ -22,8 +22,7 @@
 					</li>
 					
 					<li><a href="librarian/book/list"><i class="icon-book icon-large"></i>&nbsp;Sách</a></li>
-					<li><a href="librarian/member/list"><i class="icon-group icon-large"></i>&nbsp;Đọc giả</a></li>
-					<li><a href="archive.php"><i class="icon-list-alt icon-large"></i>&nbsp;Archive</a></li>
+					<li><a href="librarian/member/listmember"><i class="icon-group icon-large"></i>&nbsp;Độc giả</a></li>
 					<li><a href="#myModal" data-toggle="modal"><i class="icon-search icon-large"></i>&nbsp;Tìm kiếm</a></li>
 				
 
