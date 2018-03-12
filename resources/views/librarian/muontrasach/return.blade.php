@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="span12">		
-	<div class="alert alert-info"><strong>Borrowed Books</strong></div>
+	<div class="alert alert-info"><strong>Danh sách Mượn sách</strong></div>
     <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
 		<div class="pull-right">
 			<a href="" onclick="window.print()" class="btn btn-info"><i class="icon-print icon-large"></i> Print</a>
@@ -18,15 +18,17 @@
             </tr>
         </thead>
 
-        <tbody>								         
-			<tr class="del17">							                              
-                <td>Cuộc chiến của những vì sao</td>
-                <td>Nguyễn Nguyễn</td>
-				<td>02/02/2018</td> 
-                <td>25/02/2018</td>
-				<td>08/02/2018</td>
+        <tbody>
+        	@foreach($chitietphieumuon as $ctpm)								         
+			<tr class="{{$ctpm->id}}">							                              
+                <td>{{$ctpm->sach->tensach}}</td>
+                <td>{{$ctpm->phieumuon->docgia->ten}} {{$ctpm->phieumuon->docgia->ho}}</td>
+				<td>{{$ctpm->phieumuon->ngaymuon}}</td> 
+                <td>{{$ctpm->phieumuon->ngaydaohan}}</td>
+				<td>{{$ctpm->ngaytra}}</td>
                 <td></td> 				 
-            </tr>				
+            </tr>
+            @endforeach				
         </tbody>
 
     </table>

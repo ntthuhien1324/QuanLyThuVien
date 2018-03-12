@@ -13,11 +13,11 @@
 					<li class="active"><a href="dashboard"><i class="icon-home icon-large"></i>&nbsp;Home</a></li>
 					<li><a href="librarian/user/list"><i class="icon-user icon-large"></i>&nbsp;Users</a></li>
 					
-					<li><a href="borrow.php"  data-toggle="dropdown" ><i class="icon-file icon-large"></i> Mượn - Trả</a>
+					<li><a data-toggle="dropdown" href="#"><i class="icon-file icon-large"></i> Mượn - Trả</a>
 						<ul class="dropdown-menu">
-							<li><a href="borrow.php"><i class="icon-pencil icon-large"></i>&nbsp;Mượn</a></li>
-							<li><a href="return.php"><i class="icon-cog icon-large"></i>&nbsp;Danh sách trả</a></li>
-							<li><a href="view_borrow.php"><i class="icon-reorder icon-large"></i>&nbsp;Danh sách mượn</a></li>
+							<li><a href="librarian/transaction/borrow"><i class="icon-pencil icon-large"></i>&nbsp;Mượn</a></li>
+							<li><a href="librarian/transaction/return"><i class="icon-cog icon-large"></i>&nbsp;Danh sách trả</a></li>
+							<li><a href="librarian/transaction/list"><i class="icon-reorder icon-large"></i>&nbsp;Danh sách mượn</a></li>
 						</ul>
 					</li>
 					

@@ -3,13 +3,14 @@
 
 <div class="span12">		
 	
-	<div class="alert alert-info"><strong>Borrowed Books</strong></div>
+	<div class="alert alert-info"><strong>Danh sách Đang mượn sách</strong></div>
     
     <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
         <thead>
+
             <tr>
                 <th>Tiêu đề</th>                                 
-                <th>Đọc giả</th>                                                                  
+                <th>Đọc giả</th>                   
                 <th>Ngày mượn</th>                                 
                 <th>Ngày đáo hạn</th>                                
                 <th>Ngày trả</th>
@@ -18,17 +19,19 @@
         </thead>
         
         <tbody>
-			<tr class="del1">											                   
-                <td>Khoa học Xã Hội</td>
-                <td>Thư Võ</td>
-				<td>02/02/2018</td> 
-                <td>25/02/2018</td>
-				<td></td>
-				<td>đang mượn</td>
-				<td> <a rel="tooltip"  title="Return" id="1" href="#delete_book1" data-toggle="modal"    class="btn btn-success"><i class="icon-check icon-large"></i>Return</a></td>
+        	@foreach($chitietphieumuon as $ctpm)
+			<tr class="del{{$ctpm->id}}">                   
+                <td>{{$ctpm->sach->tensach}}</td>
+                <td>{{$ctpm->phieumuon->docgia->ten}} {{$ctpm->phieumuon->docgia->ho}}</td>
+				<td>{{$ctpm->phieumuon->ngaymuon}}</td> 
+                <td>{{$ctpm->phieumuon->ngaydaohan}}</td>
+				<td>{{$ctpm->ngaytra}}</td>
+				<td>{{$ctpm->tinhtrang}}</td>
+				<td> <a rel="tooltip"  title="Return" id="{{$ctpm->id}}" href="#delete_book{{$ctpm->id}}" data-toggle="modal" class="btn btn-success"><i class="icon-check icon-large"></i>Return</a></td>
 				@include('librarian.muontrasach.modal_return')
                 <td></td> 				 
-            </tr>				
+            </tr>
+            @endforeach					
         </tbody>
     </table>
 </div>

@@ -8,6 +8,7 @@ class phieumuon extends Model
 {
     //
     protected $table = "phieumuon";
+    public $timestamps = false;
 
     public function chitietphieumuon() {
     	return $this->hasMany('App\chitietphieumuon','maphieumuon','id');

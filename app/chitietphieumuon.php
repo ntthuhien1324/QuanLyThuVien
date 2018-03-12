@@ -8,6 +8,7 @@ class chitietphieumuon extends Model
 {
     //
 	protected $table = "chitietphieumuon";
+	public $timestamps = false;
 
 	public function phieumuon() {
 		return $this->belongsTo('App\phieumuon','maphieumuon','id');

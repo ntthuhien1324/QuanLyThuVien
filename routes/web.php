@@ -43,5 +43,15 @@ Route::group(['prefix'=>'librarian'], function(){
 
 		Route::get('deletebook/{id}','BookController@getDeleteBook');
 	});
+
+	Route::group(['prefix'=>'transaction'], function(){
+		Route::get('borrow','TransactionController@getBorrow');
+		Route::post('borrow','TransactionController@postBorrow');
+
+		Route::get('return','TransactionController@getReturn');
+		Route::get('list','TransactionController@getList');
+
+		Route::get('return/{id}','TransactionController@getReturnBook');
+	});
 });
 

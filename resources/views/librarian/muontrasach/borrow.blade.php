@@ -3,36 +3,53 @@
 
 <div class="alert alert-info">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong><i class="icon-user icon-large"></i>&nbsp;Borrow Table</strong>
+    <strong><i class="icon-user icon-large"></i>&nbsp;Bảng mượn sách</strong>
 </div>
 
-<div class="span12">		
-	<form method="post" action="borrow_save.php">
+<div class="span12">
+	@if(count($errors)>0)
+		<div class="alert alert-danger">
+			@foreach($errors->all() as $err)
+				{{$err}}<br>
+			@endforeach
+		</div>
+	@endif
+
+	@if(session('thongbao'))
+		<div class="alert alert-success">
+			{{session('thongbao')}}
+		</div>
+	@endif		
+	<form method="post" action="librarian/transaction/borrow">
+		<input type="hidden" name="_token" value="{{csrf_token()}}" />
 		<div class="span3">
 			<div class="control-group">
-				<label class="control-label" for="inputEmail">Borrower Name</label>			
+				<label class="control-label" >Tên độc giả</label>			
 				<div class="controls">
-					<select name="member_id" class="chzn-select"required/>
+					<select name="id" class="chzn-select" id="member_id" required/>
 						<option></option>
+						@foreach($docgia as $dg)
+							<option value="{{$dg->id}}">{{$dg->ten}} {{$dg->ho}}</option>
+						@endforeach
 				</div>
 			</div>
 
 			<div class="control-group"> 
-				<label class="control-label" for="inputEmail">Due Date</label>
+				<label class="control-label" >Ngày đáo hạn</label>
 				<div class="controls">
-					<input type="text"  class="w8em format-d-m-y highlight-days-67 range-low-today" name="due_date" id="sd" maxlength="10" style="border: 3px double #CCCCCC;" required/>
+					<input type="text"  class="w8em format-d-m-y highlight-days-67 range-low-today" name="ngaydaohan" id="due_date" maxlength="10" style="border: 3px double #CCCCCC;" required />
 				</div>
 			</div>
 
 			<div class="control-group"> 
 				<div class="controls">
-					<button name="delete_student" class="btn btn-success"><i class="icon-plus-sign icon-large"></i> Borrow</button>
+					<button name="submit" type="submit" class="btn btn-success"><i class="icon-plus-sign icon-large"></i> Mượn</button>
 				</div>
 			</div>
 		</div>
 
 		<div class="span8">
-			<div class="alert alert-success"><strong>Select Book</strong></div>
+			<div class="alert alert-success"><strong>Chọn sách</strong></div>
             <table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
 				<thead>
                     <tr>                       
@@ -48,22 +65,23 @@
                 </thead>
                 
                 <tbody>
-					<tr class="del8">
-						<td>8</td>
-                        <td>Đánh nhau với cối xay gió</td>
-						<td>Văn học</td> 
-                        <td>Trịnh Thị Thu</td> 
-						<td>Nhà báo Tuổi Trẻ</td>
-						<td width="">Mới</td> 
+                	@foreach($sach as $sach)
+					<tr class="del{{$sach->id}}}">
+						<td>{{$sach->id}}</td>
+                        <td>{{$sach->tensach}}</td>
+						<td>{{$sach->theloai->tenloai}}</td> 
+                        <td>{{$sach->tacgia}}</td> 
+						<td>{{$sach->nhaxuatban}}</td>
+						<td>{{$sach->tinhtrang}}</td> 
 						
 						@include('librarian.tooltip_edit_delete')
 
                         <td width="20">
-							<input id="" class="uniform_on" name="selector[]" type="checkbox" value="8" >			
+							<input id="" class="uniform_on" name="selector[]" type="checkbox" value="{{$sach->id}}" >			
                         </td>
 						
                     </tr>
-									
+					@endforeach				
                 </tbody>
             </table>
 		</div>					
@@ -76,7 +94,7 @@ $(".uniform_on").change(function(){
     if( $(".uniform_on:checked").length == max ){
 	
         $(".uniform_on").attr('disabled', 'disabled');
-		         alert('3 Books are allowed per borrow');
+		         alert('Chỉ được mượn 3 sách');
         $(".uniform_on:checked").removeAttr('disabled');
 		
     }else{
